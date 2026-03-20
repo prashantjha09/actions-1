@@ -12,11 +12,14 @@ jobs:
         - name: Welcome message 
           run: echo "My first Github Action job"
         
-        - name: List files 
-          run: ls  
+        - name: List and Read files 
+          run: |
+             echo "ls My first Github Actions Job"
+             ls -ltra
+             cat Readme.md
 
-        - name: Read files
-          run: cat README.md 
+        # - name: Read files
+        #   run: cat README.md 
 
 
 
