@@ -24,6 +24,3 @@ jobs:
         - name: List Repo Files
           run: ls -ltra   
             
-
-        # - name: Read files
-        #   run: cat README.md 
