@@ -1,6 +1,7 @@
 name: concurrency-test
 
-on: push
+on: 
+    workflow_dispatch:
 
 concurrency:
   group: deploy-main
@@ -14,5 +15,5 @@ jobs:
       run: |
         echo Deploying ....
         sleep 120
-        
+
           
