@@ -1,0 +1,18 @@
+name: concurrency-test
+
+on: push
+
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Dummy JOB    
+      run: |
+        echo Deploying ....
+        sleep 120
+        
+          
