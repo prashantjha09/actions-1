@@ -2,18 +2,23 @@ name: concurrency-test
 
 on: 
     workflow_dispatch:
-
-concurrency:
-  group: deploy-main
-  cancel-in-progress: true
-
 jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Build Docker image
+        run: |
+             echo Building Image
+         
   deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy Dummy JOB    
-      run: |
-        echo Deploying ....
-        sleep 120
+        runs-on: ubuntu-latest  
+        concurrency:
+            group: deploy-main
+            cancel-in-progress: true
+        steps:
+        - name: Deploy Dummy JOB    
+          run: |
+            echo Deploying ....
+            sleep 120
 
           
