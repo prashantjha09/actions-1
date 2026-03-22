@@ -1,0 +1,41 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+
+    inputs:
+      db_name:
+        required: true
+        type: string
+
+    secrets:
+      db_password:
+        required: true
+
+    outputs:
+      connection_string:
+        description: "DB connection string"
+        value: ${{ jobs.build.outputs.conn }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      conn: ${{ steps.make.outputs.conn }}
+
+    steps:
+
+      - name: Show input
+        run: |
+          echo "DB_NAME = ${{ inputs.db_name }}"
+
+      - name: Use secret
+        run: |
+          echo "Password received (hidden)"
+
+      - name: Create connection string
+        id: make
+        run: |
+          CONN="postgres://${{ inputs.db_name }}:${{ secrets.db_password }}@localhost:5432/app"
+          echo "conn=$CONN" >> $GITHUB_OUTPUT
