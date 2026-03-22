@@ -1,0 +1,16 @@
+name: My Docker Action
+
+inputs:
+  db_name:
+    required: true
+
+outputs:
+  result:
+    value: ${{ steps.run.outputs.result }}
+
+runs:
+  using: docker
+  image: Dockerfile
+
+  env:
+    DB_NAME: ${{ inputs.db_name }}
