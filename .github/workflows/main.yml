@@ -3,9 +3,6 @@ name: Main Workflow
 on:
   push:
 
-env:
-  DB_NAME: mydb
-
 jobs:
 
   call-reusable:
@@ -13,7 +10,7 @@ jobs:
     uses: ./.github/workflows/reusable.yml
 
     with:
-      db_name: ${{ env.DB_NAME }}
+      db_name: ${{ vars.DB_NAME }}
 
     secrets:
       db_password: ${{ secrets.DB_PASSWORD }}
