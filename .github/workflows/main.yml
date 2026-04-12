@@ -17,7 +17,7 @@ jobs:
 
   use-output:
 
-    runs-on: ubuntu-latest
+    runs-on: pjha-mac
 
     needs: call-reusable
 
